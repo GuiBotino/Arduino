@@ -1,0 +1,73 @@
+#define buzzer 3
+#define trigger 11
+#define echo 10
+void setup() {
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(trigger, HIGH);
+  digitalWrite(trigger, LOW);
+  float distancia = 0.01715 * pulseIn(echo,HIGH);
+  if (distancia < 10)
+ {
+    Serial.print(distancia);
+    Serial.println(" cm");
+    tone(buzzer, 528, 100);
+    delay(1000);
+ }
+  else if (distancia < 20) {
+    Serial.print(distancia);
+    Serial.println(" cm");
+    tone(buzzer, 440, 100);
+    delay(1000);
+  }
+  else if (distancia < 30) {
+    Serial.print(distancia);
+    Serial.println(" cm");
+    tone(buzzer, 330, 100);
+    delay(1000);
+  }
+  else if (distancia > 30) {
+     Serial.print(distancia);
+    Serial.println(" cm");
+    tone(buzzer, 264, 100);
+    delay(1000);
+  }
+}
+
+#define trigger 11
+#define echo    10
+void setup() {
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
+  Serial.begin(9600); //inicializa a comunicação entre o arduino e o cumputador, taxa de bits por segundo
+}
+
+void loop() {
+  digitalWrite(trigger, HIGH);
+  digitalWrite(trigger, LOW);
+  float distancia = 0.01715 * pulseIn(echo,HIGH); //Mudança de Low para High na porta echo, calcula o tempo
+  Serial.print(distancia);
+  Serial.println(" cm");
+}
+
+#define buzzer 6
+void setup() {
+pinMode(buzzer, OUTPUT);
+}
+
+void loop() { //porta frequencia tempo
+tone(buzzer, 267, 1000);
+delay(1000); //msm tempo q ta tocando
+tone(buzzer, 297, 1000);
+delay(100000);
+tone(buzzer, 330, 1000);
+delay(1000);
+}
+
+
+
